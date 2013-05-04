@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Do Not Due</title>
+        
+    </head>
+    <body>
+        <div id="content-main">App goes here!</div>
+        
+        <script type="text/javascript">
+            var dojoConfig = {
+                has: { deviceReady: false },
+                baseUrl: "/js/src",
+                packages: [
+                    {name: "dnd", location: "dnd"},
+                    {name: "vendor", location: "vendor/"},
+                    {name: "dojo", location: "dojo/dojo"},
+                    {name: "dijit", location: "dojo/dijit"},
+                    {name: "dojox", location: "dojo/dojox"},
+                    {name: "util", location: "dojo/util"}
+                ],
+                async: true,
+                parseOnLoad: false,
+                cacheBust: true,
+                //deviceReady: true
+            };
+        </script>
+        <script src="/js/src/dojo/dojo/dojo.js"></script>
+        <script type="text/javascript">
+            require(["dojo/has", "dojo/ready"], function(has, ready) {
+                // console.log(config);
+                if (has("deviceReady")) {
+                    document.addEventListener("deviceready", onDeviceReady, false);
+                }
+                else {
+                    ready(onDeviceReady);
+                }
+                
+                function onDeviceReady() {
+                    console.log("i'm Ready!!!");          
+                }        
+            });
+
+            
+        </script>
+    </body>
+</html>
