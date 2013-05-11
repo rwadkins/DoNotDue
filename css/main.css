@@ -26,6 +26,7 @@ body {
 }
 
 #mainNode {
+    position: relative;
     -webkit-flex: 1 1 auto;
     border: 1px solid #bbb;
     overflow: auto;
@@ -50,24 +51,45 @@ body {
     border: 1px solid #bbb;
 }
 
+#mainNode .itemList, #mainNode .itemEdit {
+    position: absolute; 
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
 #mainNode .itemList {
-    position: relative;
+    top: 0;
+    bottom: 0;
+    transition: bottom 1s;
+
 }
 
 #mainNode .itemEdit {
-    position: absolute; 
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
     top: 100%;
-    left: 0;
-    right: 0;
     bottom: 0;
-    height: 0;
     transition: top 1s;
 }
 
-#mainNode .itemEdit.visible {
+#mainNode.editItem .itemList {
+    bottom: 100%;
+}
+
+#mainNode.editItem .itemEdit {
     top: 0;
 }
 
 #mainNode .itemEdit > * {
     width: 100%;
+    border: none;
+}
+
+#mainNode .itemEdit input, #mainNode .itemEdit button {
+    -webkit-flex: 0 0 auto;    
+}
+
+#mainNode .itemEdit  textarea {
+    -webkit-flex: 1 1;
 }
