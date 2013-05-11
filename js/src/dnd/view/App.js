@@ -20,7 +20,9 @@ define([
             this.inherited(arguments);
             
             var header = new HeaderView({}, this.headerNode);
+            header.startup();
             var main = new MainView({}, this.mainNode);
+            main.startup();
         }
     });
 }); 

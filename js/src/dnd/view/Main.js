@@ -17,6 +17,7 @@ define([
       postCreate: function() {
           this.inherited(arguments);
           var editItem = new EditItem({}, this.itemEditNode);
+          editItem.startup();
       }
    });
 });

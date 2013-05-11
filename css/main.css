@@ -28,6 +28,7 @@ body {
 #mainNode {
     -webkit-flex: 1 1 auto;
     border: 1px solid #bbb;
+    overflow: auto;
 }
 
 .titleHeader {
@@ -50,20 +51,23 @@ body {
 }
 
 #mainNode .itemList {
-    z-index: 0;    
+    position: relative;
 }
 
 #mainNode .itemEdit {
     position: absolute; 
+    top: 100%;
     left: 0;
     right: 0;
     bottom: 0;
     height: 0;
-    z-index: 10;    
+    transition: top 1s;
 }
 
 #mainNode .itemEdit.visible {
     top: 0;
-    height: auto;
-    transition: top 1s, height 2s;
+}
+
+#mainNode .itemEdit > * {
+    width: 100%;
 }
