@@ -48,3 +48,22 @@ body {
     height: 22px;
     border: 1px solid #bbb;
 }
+
+#mainNode .itemList {
+    z-index: 0;    
+}
+
+#mainNode .itemEdit {
+    position: absolute; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    z-index: 10;    
+}
+
+#mainNode .itemEdit.visible {
+    top: 0;
+    height: auto;
+    transition: top 1s, height 2s;
+}
