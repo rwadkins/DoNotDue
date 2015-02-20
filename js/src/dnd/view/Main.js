@@ -5,7 +5,9 @@ define([
     "dojo/topic",
     "dojo/_base/lang",
     "dojo/dom-class",
-    "dnd/view/EditItem",  
+    "dnd/view/EditItem",
+    "dnd/view/TaskList",
+    "dnd/utils/log",
     "dojo/text!dnd/view/Main/template.html"
 ], function(
     declare, 
@@ -15,11 +17,15 @@ define([
     lang,
     domClass,
     EditItem, 
+    TaskList,
+    log,
     template
 ) {
    return declare([_WidgetBase, _TemplatedMixin], {
       templateString: template,
       declaredClass: "main",
+      _editModule: null,
+      _listModule : null,
       postCreate: function() {
           this.inherited(arguments);
           this._createChildNodes();
@@ -35,15 +41,25 @@ define([
           );
       },
       _createChildNodes : function() {
-          var editItem = new EditItem({}, this.itemEditNode);
-          editItem.startup();
-          this.own(editItem);
+          this._editModule = new EditItem({}, this.itemEditNode);
+          this._editModule.startup();
+
+          this._listModule = new TaskList({}, this.itemListNode);
+          this._listModule.startup();
+
+          this.own(
+              this._editModule,
+              this._listModule
+          );
       },
       editItemSubscribe: function(e) {
-          console.log("editItemSubscribe");
+          if (e && e.task) {
+              this._editModule.set("task", e.task);
+          }
           domClass.add(this.domNode, "editItem");
       },
       editItemDoneSubscribe: function(e) {
+          log(e);
           domClass.remove(this.domNode, "editItem");
       }
    });
