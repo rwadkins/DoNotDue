@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #f3e5b4;
     background-image: url("/images/main_background.png");
@@ -102,4 +106,12 @@ body {
 
 #mainNode .itemEdit  textarea {
     -webkit-flex: 1 1;
+}
+
+.icon {
+    padding: 2px;
+}
+.icon:before {
+    font-size: 18px;
+    color: #999;
 }
