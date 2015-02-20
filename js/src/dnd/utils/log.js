@@ -1,8 +1,8 @@
 define([], function() {
-	return {
-        log: function() {
-            console.log.apply(console, arguments);
-        }
 
-	}
+    var log = function() {
+        console.log.apply(console, arguments);
+    }
+
+    return log;
 })
