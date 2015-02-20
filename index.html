@@ -9,25 +9,8 @@
     <body>
         <div id="content-main"></div>
         
-        <script type="text/javascript">
-            var dojoConfig = {
-                has: { deviceReady: false },
-                baseUrl: "/js/src",
-                packages: [
-                    {name: "dnd", location: "dnd"},
-                    {name: "vendor", location: "vendor/"},
-                    {name: "dojo", location: "dojo/dojo"},
-                    {name: "dijit", location: "dojo/dijit"},
-                    {name: "dojox", location: "dojo/dojox"},
-                    {name: "util", location: "dojo/util"}
-                ],
-                async: true,
-                parseOnLoad: false,
-                cacheBust: false,
-                //deviceReady: true
-            };
-        </script>
-        <script src="/js/src/dojo/dojo/dojo.js"></script>
+        <script src="/js/dojoConfig.js"></script>
+        <script src="/bower_components/dojo/dojo.js"></script>
         <script type="text/javascript">
             require(["dojo/has", "dojo/ready", "dnd/controller/app"], function(has, ready, app) {
                 // console.log(config);
