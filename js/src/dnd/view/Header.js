@@ -19,19 +19,18 @@ define([
       templateString: template,
       declaredClass: "header",
       postCreate: function() {
-          console.log("Header postCreate");
           this.inherited(arguments);
       },
       startup: function() {
-          console.log("Header startup");
           this.inherited(arguments);
-
-          this.own(
-              on(this.domNode, ".addItem:click", lang.hitch(this, "addItemClick"))
-          )
+          this._bindEvents();
       },
-      addItemClick: function(e) {
-          console.log("addItemClick");
+      _bindEvents: function() {
+          this.own(
+              on(this.domNode, ".addItem:click", lang.hitch(this, "_addItemClick"))
+          );
+      },
+      _addItemClick: function(e) {
           topic.publish("editItem", null);
       }
    });

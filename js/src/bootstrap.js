@@ -8,7 +8,6 @@ require(["dojo/has", "dojo/ready", "dnd/controller/app"], function(has, ready, a
     }
     
     function onDeviceReady() {
-        console.log("i'm Ready!!!");
         app.initialize();
     }        
 });

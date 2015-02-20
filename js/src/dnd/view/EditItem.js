@@ -19,7 +19,9 @@ define([
         templateString : template,
         startup : function() {
             this.inherited(arguments);
-
+            this._bindEvents();
+        },
+        _bindEvents : function() {
             this.own(
                 on(this.domNode, "button:click", lang.hitch(this, "buttonClick")),
                 on(this.domNode, "backbutton", lang.hitch(this,"backButton"))

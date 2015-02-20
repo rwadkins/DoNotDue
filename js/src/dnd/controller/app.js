@@ -1,29 +1,22 @@
 define([
     "dojo/query",
-    "dnd/view/App"
+    "dnd/view/App",
+    "dnd/utils/log"
 ], function(
     query, 
-    AppView
+    AppView,
+    log
 ) {
     var app = {
-        initialize: function() {
-            this.log("App Initialize!");
-            
+        initialize: function() {            
             this.mainContent = query("#content-main")[0];
             this.build();
-            
         },
         
         build: function() {
-            this.log("build started");
-
             var app = new AppView({},this.mainContent);
-        },
-        
-        log: function() {
-            console.log.apply(console, arguments);
         }
-    }
+    };
     
     return app; 
 });

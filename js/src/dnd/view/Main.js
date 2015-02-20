@@ -22,12 +22,22 @@ define([
       declaredClass: "main",
       postCreate: function() {
           this.inherited(arguments);
-          var editItem = new EditItem({}, this.itemEditNode);
-          editItem.startup();
+          this._createChildNodes();
       },
       startup: function() {
-          topic.subscribe("editItem", lang.hitch(this,"editItemSubscribe"));
-          topic.subscribe("editItemDone", lang.hitch(this,"editItemDoneSubscribe"));
+          this.inherited(arguments);
+          this._pubSubBindings();
+      },
+      _pubSubBindings : function() {
+          this.own(
+            topic.subscribe("editItem", lang.hitch(this,"editItemSubscribe")),
+            topic.subscribe("editItemDone", lang.hitch(this,"editItemDoneSubscribe"))
+          );
+      },
+      _createChildNodes : function() {
+          var editItem = new EditItem({}, this.itemEditNode);
+          editItem.startup();
+          this.own(editItem);
       },
       editItemSubscribe: function(e) {
           console.log("editItemSubscribe");

@@ -18,11 +18,15 @@ define([
                
         postCreate: function() {
             this.inherited(arguments);
-            
+            this._createChildNodes();
+        },
+        _createChildNodes : function() {
             var header = new HeaderView({}, this.headerNode);
             header.startup();
             var main = new MainView({}, this.mainNode);
             main.startup();
+            this.own(header, main);           
         }
+
     });
 }); 
