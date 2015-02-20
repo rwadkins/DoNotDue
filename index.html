@@ -10,24 +10,7 @@
         <div id="content-main"></div>
         
         <script src="/js/dojoConfig.js"></script>
-        <script src="/bower_components/dojo/dojo.js"></script>
-        <script type="text/javascript">
-            require(["dojo/has", "dojo/ready", "dnd/controller/app"], function(has, ready, app) {
-                // console.log(config);
-                if (has("deviceReady")) {
-                    document.addEventListener("deviceready", onDeviceReady, false);
-                }
-                else {
-                    ready(onDeviceReady);
-                }
-                
-                function onDeviceReady() {
-                    console.log("i'm Ready!!!");
-                    app.initialize();
-                }        
-            });
-
-            
-        </script>
+        <script src="/js/src/dojo/dojo.js"></script>
+        <script src="/js/src/bootstrap.js"></script>
     </body>
 </html>
